@@ -5,7 +5,6 @@ chrome.extension.sendMessage({}, function(response) {
 
 
 		chrome.tabs.getSelected(null, function(tab){
-			console.log(tab);
     		const url = tab.url;
 
     		const parsedUrl = url.match(/(\w+)(?=\.com|\.io|\.net|\.org)/ig)
@@ -22,8 +21,8 @@ chrome.extension.sendMessage({}, function(response) {
 		.then(function(response) {
 			return response.json();
 		}).then(function(response) {
-			console.log(response);
-			console.log(parsedUrl)
+			console.log(response.businesses[0]);
+			let image = response.businesses[0]['image_url'];
 			let name = response.businesses[0]['name'];
 			let rating = response.businesses[0]['rating'];
 			let reviewCount = response.businesses[0]['review_count'];
@@ -37,6 +36,7 @@ chrome.extension.sendMessage({}, function(response) {
 			let phone = response.businesses[0]['display_phone'];
 			console.log(document.querySelector('#mainPopup'))
 			document.querySelector('#mainPopup').innerHTML = `
+				<div class="head-image"><img src="${image}"></div>
 				<h3>${name}</h3>
 				<div class="star-wrap">
 					<span class="stars stars-${rating}"></span>${reviewCount} Reviews
