@@ -15,13 +15,21 @@ chrome.extension.sendMessage({}, function(response) {
 		  			}
 				};
 
-				fetch(`https://api.yelp.com/v3/businesses/search?term=${parsedUrl}&location=Santa+Monica`, init)
+				fetch(`https://api.yelp.com/v3/businesses/search?term=${parsedUrl}&location=Santa+Monica&limit=1`, init)
 				.then(function(response) {
 					return response.json();
 				}).then(function(response) {
+					let name = response.businesses[0]['name'];
+					let lowerCaseName = name.toLowerCase().replace(/[\s+\'\"\-\.]/g,'');
+
+					console.log(parsedUrl, lowerCaseName);
+					if (lowerCaseName.indexOf(parsedUrl) === -1) {
+						document.querySelector('#mainPopup').innerHTML = '<div class="no-results"><img src="ajax.gif"><br>Sorry, no results.</div>';
+						return;
+					}
+
 					let link = response.businesses[0]['url'];
 					let image = response.businesses[0]['image_url'];
-					let name = response.businesses[0]['name'];
 					let rating = response.businesses[0]['rating'].toString();
 					rating = rating.replace(/\./g,'-');
 					let reviewCount = response.businesses[0]['review_count'];
