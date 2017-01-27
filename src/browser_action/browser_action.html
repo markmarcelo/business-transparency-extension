@@ -4,30 +4,38 @@
 	#mainPopup {
 		color: #333;
 		padding: 10px;
-		height: 290px;
 		width: 220px;
 		font-family: Helvetica, Ubuntu, Arial, sans-serif;
-		font-size: 15px;
+		font-size: 14px;
+		line-height: 1.25em;
 	}
 	a {
 		color: #0073bb;
 		text-decoration: none;
 		outline: none;
 	}
+	h3 {
+		color: #333;
+		margin: 12px 0 10px;
+	}
+	.no-results {
+		color: #aaa;
+		text-align: center;
+	}
 	.head-image {
 		width: 220px;
 		height: 120px;
-		border-radius: 5px;
+		border: 1px solid #ccc;
 		overflow: hidden;
 	}
 	.head-image img {
-		border-radius: 5px;
 		outline: none;
 		width: 100%;
 	}
 	.star-wrap {
 		color: #777;
 		line-height: 24px;
+		margin-bottom: 9px;
 	}
 	.stars {
 		display: block;
@@ -37,10 +45,40 @@
 		height: 24px;
 		margin-right: 5px;
 		overflow: hidden;
+	}	
+	.stars-5 {
+		background-position: 0 -216px;
+	}
+	.stars-4-5 {
+		background-position: 0 -192px;
 	}
 	.stars-4 {
 		background-position: 0 -168px;
 	}
+	.stars-3-5 {
+		background-position: 0 -144px;
+	}
+	.stars-3 {
+		background-position: 0 -120px;
+	}
+	.stars-2-5 {
+		background-position: 0 -96px;
+	}
+	.stars-2 {
+		background-position: 0 -72px;
+	}
+	.stars-1-5 {
+		background-position: 0 -48px;
+	}
+	.stars-1 {
+		background-position: 0 -24px;
+	}
+	.category {
+		color: #555;
+		font-size: 13px;
+		margin-bottom: 5px;
+	}
+
 	h1 {
 		font-size: 2em;
 	}
@@ -48,7 +86,10 @@
 </head>
 <body>
 <div id="mainPopup">
-
+	<div class="no-results">
+		Sorry, no results.
+	</div>
+	
 </div>
 <script type="text/javascript" src="../inject/inject.js"></script>
 </body>
